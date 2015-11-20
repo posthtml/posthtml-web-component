@@ -1,0 +1,33 @@
+{
+  "name": "posthtml-web-component",
+  "version": "0.1.0",
+  "description": "Server Side Web Component Render.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/island205/posthtml-web-component.git"
+  },
+  "keywords": [
+    "web",
+    "component",
+    "posthtml",
+    "webcomponent",
+    "node"
+  ],
+  "author": "island205@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/island205/posthtml-web-component/issues"
+  },
+  "homepage": "https://github.com/island205/posthtml-web-component#readme",
+  "dependencies": {
+    "posthtml": "^0.7.0"
+  },
+  "devDependencies": {
+    "assert": "^1.3.0",
+    "chai": "^3.4.1"
+  }
+}
