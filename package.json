@@ -25,6 +25,7 @@
   "homepage": "https://github.com/island205/posthtml-web-component#readme",
   "dependencies": {
     "posthtml": "^0.7.0",
+    "posthtml-parser": "^0.1.1",
     "request": "^2.67.0"
   },
   "devDependencies": {

@@ -14,17 +14,17 @@ var indexHTML = fixture('fixtures/index.html')
 
 describe('loader', function () {
   it('should load file from file system', function (done) {
-    loader.load(path.join(__dirname, './fixtures/index.html'), function (error, data) {
-      expect(data).to.eql(indexHTML)
-      done()
-    })
+    loader.load(path.join(__dirname, './fixtures/index.html'))
+      .then(function (data) {
+        expect(data).to.eql(indexHTML)
+      }).then(done, done)
   })
 
   it('should load file from remote server', function(done) {
-    loader.load('http://island205.com/ReactUnitTesting/Caculator/', function(error, data) {
-      expect(data).to.eql(fixture('fixtures/Caculator.html'))
-      done()
-    })
+    loader.load('http://island205.com/ReactUnitTesting/Caculator/')
+      .then(function (data) {
+        expect(data).to.eql(fixture('fixtures/Caculator.html'))
+      }).then(done, done)
   })
 })
 
@@ -61,6 +61,18 @@ describe('parser', function () {
       uri: 'https://google.com/hello-world.html'
     })
   })
+  it('should seperate HTMLImport source into style script and html parts', function () {
+    var HTMLImport = {
+      name: 'hello-world',
+      originURI: 'hello-world.html',
+      uri: path.join(__dirname, './fixtures/hello-world.html'),
+      source: fixture('fixtures/hello-world.html')
+    }
+    parser.prepareHTMLImport(HTMLImport)
+    expect(HTMLImport.parts.scripts.length).to.eql(1)
+    expect(HTMLImport.parts.styles.length).to.eql(1)
+    expect(HTMLImport.parts.template).to.not.be.undefined
+  })
 })
 
 describe('posthtml-web-component', function () {
@@ -70,7 +82,7 @@ describe('posthtml-web-component', function () {
     }))
     webComponent.process(indexHTML)
       .then(function (result) {
-        expect(result.html).to.eql(fixture('fixtures/result.html'))
+        expect(result.html).to.eql(fixture('fixtures/result.txt'))
       }).then(done, done)
   })
 })

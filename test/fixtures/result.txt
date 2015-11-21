@@ -1,13 +1,22 @@
-<!-- Defines element markup -->
+<!doctype html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <title>&lt;hello-world&gt;</title>
+
+    <!-- Imports custom element -->
+    
+
 <style>
   body {
     font-size: 20px;
   }
-</style>
+</style></head>
+<body>
 
-<template>
+    <!-- Runs custom element -->
     <p>Hello <strong></strong> :)</p>
-</template>
 
 <script>
 (function(window, document, undefined) {
@@ -56,4 +65,5 @@
         prototype: MyElementProto
     });
 })(window, document);
-</script>
+</script></body>
+</html>
