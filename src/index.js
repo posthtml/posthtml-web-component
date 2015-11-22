@@ -3,7 +3,6 @@ var loader = require('./loader')
 
 module.exports = function (options) {
   return function webComponent(tree, cb) {
-    debugger
     var HTMLImports = []
     tree.walk(function (node) {
       if (node.tag === 'link' &&
