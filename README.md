@@ -1,6 +1,6 @@
 # posthtml-web-component
 
-Server Side Web Component Render.
+[PostHTML](https://github.com/posthtml/posthtml) plugin for Server Side Web Component Render.
 
 ## Feature
 
