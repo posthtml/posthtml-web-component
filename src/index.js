@@ -29,7 +29,7 @@ module.exports = function (options) {
         if (HTMLImport.source) {
           styles = styles.concat(HTMLImport.parts.styles)
           scripts = scripts.concat(HTMLImport.parts.scripts)
-          tree.match({tag: HTMLImport.name}, function (node) {
+          tree.match({tag: HTMLImport.customElementTagName}, function (node) {
             return HTMLImport.parts.template
           })
         }
@@ -42,7 +42,6 @@ module.exports = function (options) {
         node.content = node.content.concat(scripts)
         return node
       })
-      debugger
       cb(null, tree)
     })
   }

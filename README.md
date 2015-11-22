@@ -5,5 +5,7 @@ Server Side Web Component Render.
 ## Feature
 
 - Base Web Component Server Side Rending
-- Remote Web Component
+- Component as Sevice
 - Static Resource Management
+
+## Advantage

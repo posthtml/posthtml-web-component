@@ -38,9 +38,9 @@ describe('parser', function () {
       }
     }
     expect(parser.parseHTMLImport(node, {
-      uri: path.join(__dirname, './fixtures/index.html')
+      hostURI: path.join(__dirname, './fixtures/index.html')
     })).to.eql({
-      name: 'hello-world',
+      customElementTagName: 'hello-world',
       originURI: 'hello-world.html',
       uri: path.join(__dirname, './fixtures/hello-world.html')
     })
@@ -54,16 +54,16 @@ describe('parser', function () {
       }
     }
     expect(parser.parseHTMLImport(node, {
-      uri: path.join(__dirname, './fixtures/index.html')
+      hostURI: path.join(__dirname, './fixtures/index.html')
     })).to.eql({
-      name: 'hello-world',
+      customElementTagName: 'hello-world',
       originURI: 'https://google.com/hello-world.html',
       uri: 'https://google.com/hello-world.html'
     })
   })
   it('should seperate HTMLImport source into style script and html parts', function () {
     var HTMLImport = {
-      name: 'hello-world',
+      customElementTagName: 'hello-world',
       originURI: 'hello-world.html',
       uri: path.join(__dirname, './fixtures/hello-world.html'),
       source: fixture('fixtures/hello-world.html')
@@ -78,7 +78,7 @@ describe('parser', function () {
 describe('posthtml-web-component', function () {
   it('should parse web component', function (done) {
     var webComponent = posthtml().use(require('../src/index')({
-      uri: path.join(__dirname, './fixtures/index.html')
+      hostURI: path.join(__dirname, './fixtures/index.html')
     }))
     webComponent.process(indexHTML)
       .then(function (result) {

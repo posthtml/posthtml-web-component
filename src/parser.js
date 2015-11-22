@@ -2,7 +2,7 @@ var path = require('path')
 var posthtml = require('posthtml')
 
 exports.parseHTMLImport = function (node, options) {
-  if (!(options && options.uri)) {
+  if (!(options && options.hostURI)) {
     throw new Error('The base uri is need in options')
   }
   var HTMLImport = {}
@@ -10,10 +10,10 @@ exports.parseHTMLImport = function (node, options) {
   if (/^(http|https):\/\//.test(HTMLImport.originURI)) {
     HTMLImport.uri = HTMLImport.originURI
   } else {
-    HTMLImport.uri = path.resolve(path.dirname(options.uri), HTMLImport.originURI)
+    HTMLImport.uri = path.resolve(path.dirname(options.hostURI), HTMLImport.originURI)
   }
   var file = path.parse(HTMLImport.uri)
-  HTMLImport.name = file.name
+  HTMLImport.customElementTagName = file.name
   return HTMLImport
 }
 
