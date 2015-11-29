@@ -2,6 +2,7 @@ var path = require('path')
 var posthtml = require('posthtml')
 var request = require('request')
 var fs = require('fs')
+var url = require('url')
 
 function LinkImport(customElementTagName, uri, originURI) {
   this.customElementTagName = customElementTagName
@@ -33,31 +34,11 @@ LinkImport.prototype.load = function() {
   }.bind(this))
 }
 
-LinkImport.prototype.loaded = function () {
-  return !!this.source
-}
-
-LinkImport.prototype.getCustomElementTagName = function () {
-  return this.customElementTagName
-}
-
-LinkImport.prototype.getStyles = function () {
-  return this.parts.styles
-}
-
-LinkImport.prototype.getScripts = function () {
-  return this.parts.scripts
-}
-
-LinkImport.prototype.getHTML = function () {
-  return this.parts.html
-}
-
 LinkImport.prototype.prepare = function () {
   var parts = this.parts = {
     styles: [],
     scripts: [],
-    html: {}
+    html: null
   }
   posthtml().use(function(tree) {
     tree.walk(function (node) {
@@ -77,22 +58,54 @@ LinkImport.prototype.prepare = function () {
     })
     // if no template tag, use itself as custom element's html
     this.parts.html || (this.parts.html = tree)
+
+    // https://github.com/posthtml/posthtml-render/pull/2
+    this.parts.html = {
+      tag: 'div',
+      attrs: {
+        'class': this.getCustomElementTagName()
+      },
+      content: this.parts.html
+    }
+
   }.bind(this)).process(this.source, {sync: true})
 }
 LinkImport.parse = function (node, options) {
   if (!(options && options.hostURI)) {
     throw new Error('The base uri is need in options')
   }
-  var customElementTagName, url, originURI
+  var customElementTagName, uri, originURI
   originURI = node.attrs.href
+  var pathname
   if (/^(http|https):\/\//.test(originURI)) {
     uri = originURI
+    pathname = url.parse(uri).pathname
   } else {
-    uri = path.resolve(path.dirname(options.hostURI), originURI)
+    uri = pathname = path.resolve(path.dirname(options.hostURI), originURI)
   }
-  var fileInfo = path.parse(uri)
-  customElementTagName = fileInfo.name
+  customElementTagName = path.parse(pathname).name
   return new LinkImport(customElementTagName, uri, originURI)
+}
+
+
+LinkImport.prototype.loaded = function () {
+  return !!this.source
+}
+
+LinkImport.prototype.getCustomElementTagName = function () {
+  return this.customElementTagName
+}
+
+LinkImport.prototype.getStyles = function () {
+  return this.parts.styles
+}
+
+LinkImport.prototype.getScripts = function () {
+  return this.parts.scripts
+}
+
+LinkImport.prototype.getHTML = function () {
+  return this.parts.html
 }
 
 module.exports = LinkImport

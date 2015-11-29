@@ -6,7 +6,6 @@
 
 - Base Web Component Server Side Rending
 - Component as Sevice
-- Static Resource Management
 
 ## Advantage
 

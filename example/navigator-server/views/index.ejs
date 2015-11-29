@@ -1,0 +1,16 @@
+<style media="screen">
+  .current {
+    font-weight: bold;
+    color: gray;
+  }
+  ul li a {
+    color: silver;
+  }
+</style>
+<ul>
+  <li class="<% if (current === 'home') {%>current<% }%>"><a href="http://localhost:5000">Home</a></li>
+  <li class="<% if (current === 'list') {%>current<% }%>"><a href="http://localhost:4000">List</a></li>
+</ul>
+<script type="text/javascript">
+
+</script>

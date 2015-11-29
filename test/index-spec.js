@@ -15,7 +15,6 @@ describe('WebComponent', function () {
     var webComponent = posthtml().use(require('../src/index')({
       hostURI: path.join(__dirname, './fixtures/index.html')
     }))
-
     webComponent.process(indexHTML)
       .then(function (result) {
         expect(result.html).to.eql(fixture('fixtures/result.txt'))

@@ -16,7 +16,9 @@
 <body>
 
     <!-- Runs custom element -->
+    <div class="hello-world">
     <p>Hello <strong></strong> :)</p>
+</div>
 
 <script>
 (function(window, document, undefined) {
