@@ -1,4 +1,5 @@
 var LinkImport = require('./LinkImport')
+var debug = require('debug')('posthtml-web-component:index')
 
 module.exports = function (options) {
   return function webComponent(tree, cb) {
@@ -13,32 +14,35 @@ module.exports = function (options) {
       }
       return node
     })
-
+    debug('parse all LinkImports', LinkImports)
     Promise.all(LinkImports.map(function (linkImport) {
       return linkImport.load()
     })).then(onAllLoaded, onAllLoaded)
 
     function onAllLoaded() {
-      var resoures = {
+      debug('onAllLoaded')
+      var resources = {
         styles: [],
         scripts: []
       }
       LinkImports.filter(function (linkImport) {
         return linkImport.loaded()
-      }).reduce(function (resoures, currentLinkImport) {
+      }).reduce(function (resources, currentLinkImport) {
         currentLinkImport.prepare()
-        resoures.styles.push.apply(resoures.styles, currentLinkImport.getStyles())
-        resoures.scripts.push.apply(resoures.scripts, currentLinkImport.getScripts())
+        resources.styles.push.apply(resources.styles, currentLinkImport.getStyles())
+        resources.scripts.push.apply(resources.scripts, currentLinkImport.getScripts())
         tree.match({tag: currentLinkImport.getCustomElementTagName()}, function (node) {
           return currentLinkImport.getHTML()
         })
-      }, resoures)
+        return resources
+      }, resources)
+      debug('prepare all resources', resources, 'done')
       tree.walk(function(node) {
         if (node && node.tag === 'head') {
-          node.content.push.apply(node.content, resoures.styles)
+          node.content.push.apply(node.content, resources.styles)
         }
         if (node && node.tag === 'body') {
-          node.content.push.apply(node.content, resoures.scripts)
+          node.content.push.apply(node.content, resources.scripts)
         }
         return node
       })

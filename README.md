@@ -154,16 +154,3 @@ We have two type `LinkImport`, local and remote.
 ```
 
 The difference of these two type is remote `LinkImport` could call an remote service, this is to say remote `LinkImport` could be dynamic.
-
-### Custom Element
-
-For the remote `LinkImport`, The attributes on it could be pass to the remote dynamic service, so you have more control on Custom Element.
-
-```html
-<link rel="import" href="http://example.com/hello-world.html">
-
-<hello-world who='PostHTML'></hello-world>
-
-<!--http://example.com/hello-world.html?who=PostHTML could return-->
-<div class="hello-world">hello PostHTML!</div>
-```

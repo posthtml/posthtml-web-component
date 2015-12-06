@@ -1,6 +1,7 @@
 var path = require('path')
 var posthtml = require('posthtml')
 var request = require('request')
+var debug = require('debug')('posthtml-web-component:LinkImport')
 var fs = require('fs')
 var url = require('url')
 
@@ -11,9 +12,11 @@ function LinkImport(customElementTagName, uri, originURI) {
 }
 
 LinkImport.prototype.load = function() {
+  debug('load LinkImport', this.customElementTagName)
   return new Promise(function (resolve, reject) {
     if (/^http:\/\//.test(this.uri)) {
       request(this.uri, function(error, response, body) {
+        debug('LinkImport', this.customElementTagName, 'loaded')
         if (error) {
           reject(error)
         } else {
@@ -23,6 +26,7 @@ LinkImport.prototype.load = function() {
       }.bind(this))
     } else {
       fs.readFile(this.uri, 'utf-8', function (error, data) {
+        debug('LinkImport', this.customElementTagName, 'loaded')
         if (error) {
           reject(error)
         } else {
