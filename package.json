@@ -4,7 +4,8 @@
   "description": "Server Side Web Component Render.",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,9 @@
   },
   "devDependencies": {
     "chai": "^3.4.1",
-    "mocha": "^2.3.4"
+    "coveralls": "^2.11.4",
+    "jscoverage": "^0.6.0",
+    "mocha": "^2.3.4",
+    "mocha-lcov-reporter": "^1.0.0"
   }
 }
