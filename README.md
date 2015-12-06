@@ -1,7 +1,8 @@
 # posthtml-web-component
 
+[![npm version](https://badge.fury.io/js/posthtml-web-component.svg)](https://badge.fury.io/js/posthtml-web-component)
 [![Build Status](https://travis-ci.org/island205/posthtml-web-component.svg?branch=master)](https://travis-ci.org/island205/posthtml-web-component?branch=master)
-[![Coverage Status](https://coveralls.io/repos/island205/posthtml-web-component/badge.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/island205/posthtml-web-component/badge.svg?branch=master)](https://coveralls.io/github/island205/posthtml-web-component)
 
 [PostHTML](https://github.com/posthtml/posthtml) plugin for Server Side Web Component Render.
 
