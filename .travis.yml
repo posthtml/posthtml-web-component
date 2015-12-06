@@ -3,7 +3,8 @@ language: node_js
 node_js:
   - "4.1"
   - "0.12"
-
+before_install:
+  - npm install istanbul -g
 env:
   global:
     - ISTANBUL_COVERAGE: yes
