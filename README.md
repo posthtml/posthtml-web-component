@@ -67,8 +67,8 @@ A typical posthtml web compnent look as following:
 
 This is a runable component itself. Consider There is a `index.html`:
 
-```
-html
+```html
+<!-- index.html -->
 <!DOCTYPE html>
 <html>
   <head>
