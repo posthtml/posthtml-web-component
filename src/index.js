@@ -2,13 +2,16 @@ var LinkImport = require('./LinkImport')
 var debug = require('debug')('posthtml-web-component:index')
 
 module.exports = function (options) {
+  options = options || {}
   return function webComponent(tree, cb) {
     var LinkImports = []
     tree.walk(function (node) {
       if (node.tag === 'link' &&
           node.attrs.rel === 'import' &&
           node.attrs.href) {
-        LinkImports.push(LinkImport.parse(node, options))
+        LinkImports.push(LinkImport.parse(node, {
+          hostURI: options.hostURI || tree.options.path || ''
+        }))
         // remove LinkImport from origin html
         return undefined
       }
