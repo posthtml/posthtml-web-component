@@ -69,7 +69,7 @@ describe('LinkImport', function () {
     })
 
     it('should load file from remote server', function(done) {
-      var linkImport = new LinkImport('', 'http://island205.com/ReactUnitTesting/Caculator/', '')
+      var linkImport = new LinkImport('', 'http://island205.github.io/ReactUnitTesting/Caculator/', '')
       linkImport.load()
         .then(function () {
           expect(linkImport.source).to.eql(fixture('fixtures/Caculator.html'))
