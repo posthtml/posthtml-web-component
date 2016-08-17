@@ -9,7 +9,7 @@
 ## Feature
 
 - Base Web Component Server Side Rending
-- Component as Sevice
+- Component as a Sevice
 
 ## Advantage
 
@@ -17,9 +17,9 @@
 
 ### Web Component
 
-Must mention that `Web Components` supported by `posthmlt-web-compoent` don't completely follow the [Web Components](http://www.w3.org/TR/components-intro/) draft.
+Must mention that `Web Components` supported by `posthmlt-web-component` don't completely follow the [Web Components](http://www.w3.org/TR/components-intro/) draft.
 
-A typical posthtml web compnent look as following:
+A typical posthtml web component looks as following:
 
 ```html
 <!-- clock.html -->
@@ -65,7 +65,7 @@ A typical posthtml web compnent look as following:
 </script>
 ```
 
-This is a runable component itself. Consider There is a `index.html`:
+This is a runnable component itself. Consider there is a `index.html`:
 
 ```html
 <!-- index.html -->
@@ -147,7 +147,7 @@ Work fine!
 
 ### LinkImport
 
-We have two type `LinkImport`, local and remote.
+We have two types of `LinkImport`, local and remote.
 
 ```html
 <!-- local LinkImport -->
@@ -157,4 +157,4 @@ We have two type `LinkImport`, local and remote.
 <link rel="import" href="http://example.com/hello-world.html">
 ```
 
-The difference of these two type is remote `LinkImport` could call an remote service, this is to say remote `LinkImport` could be dynamic.
+The difference of these two types is that remote `LinkImport` could call a remote service, this is to say remote `LinkImport` could be dynamic.
