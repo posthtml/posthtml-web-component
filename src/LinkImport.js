@@ -76,7 +76,7 @@ LinkImport.prototype.prepare = function () {
 }
 LinkImport.parse = function (node, options) {
   if (!(options && options.hostURI)) {
-    throw new Error('The base uri is need in options')
+    throw new Error('The hostURI is needed in options')
   }
   var customElementTagName, uri, originURI
   originURI = node.attrs.href
