@@ -42,11 +42,13 @@ A typical posthtml web component looks as following:
     text-shadow: 0px 2px black;
   }
 </style>
-<div class="clock">
-  <div class="hour">HH</div>
-  <div class="minute">MM</div>
-  <div class="second">SS</div>
-</div>
+<template>  
+  <div class="clock">
+    <div class="hour">HH</div>
+    <div class="minute">MM</div>
+    <div class="second">SS</div>
+  </div>
+</template>
 <script>
 (function() {
   Array.prototype.forEach.call(document.querySelectorAll('.clock'), function (clock) {
