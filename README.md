@@ -17,7 +17,7 @@
 
 ### Web Component
 
-Must mention that `Web Components` supported by `posthmlt-web-component` don't completely follow the [Web Components](http://www.w3.org/TR/components-intro/) draft.
+Must mention that `Web Components` supported by `posthtml-web-component` don't completely follow the [Web Components](http://www.w3.org/TR/components-intro/) draft.
 
 A typical posthtml web component looks as following:
 
