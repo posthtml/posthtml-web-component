@@ -5,10 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "nyc mocha",
-    "precoverage": "npm test",
-    "coverage": "nyc report --reporter=lcovonly",
-    "precoveralls": "npm run coverage",
-    "coveralls": "cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
