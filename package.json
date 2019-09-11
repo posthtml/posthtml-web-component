@@ -28,7 +28,6 @@
   "homepage": "https://github.com/island205/posthtml-web-component#readme",
   "dependencies": {
     "debug": "^2.2.0",
-    "hoek": "^6.1.3",
     "posthtml": "^0.7.0",
     "request": "^2.67.0"
   },
